@@ -1,0 +1,155 @@
+import { createMuiTheme } from "@material-ui/core/styles";
+
+export default createMuiTheme({
+  palette: {
+    primary: {
+      main: "#ff6702",
+      light: "#ffc102",
+      opacity8: "rgba(255,103,2,0.8)",
+    },
+    secondary: {
+      main: "#327be8",
+      light: "#327be8",
+      opacity8: "rgba(50,123,232,0.8)",
+    },
+    grey: {
+      "50": "#fafafa",
+      "100": "#f5f5f5",
+      "200": "#eeeeee",
+      "300": "#e0e0e0",
+      "400": "#bdbdbd",
+      "500": "#9e9e9e",
+      "600": "#757575",
+      "700": "#616161",
+      "800": "#424242",
+      "900": "#212121",
+      A100: "#d5d5d5",
+      A200: "#aaaaaa",
+      A400: "#303030",
+      A700: "#616161",
+      A222: "#222222",
+      A999: "#999999",
+      A1e: "#1e1e1e",
+      A70: "#707070",
+    },
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 56,
+      "@media (min-width:0px) and (orientation: landscape)": { minHeight: 48 },
+      "@media (min-width:600px)": { minHeight: 125 },
+    },
+  },
+  typography: {
+    htmlFontSize: 16,
+    fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+    h1: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 300,
+      fontSize: "6rem",
+      lineHeight: 1.167,
+      letterSpacing: "-0.01562em",
+    },
+    h2: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 300,
+      fontSize: "3.75rem",
+      lineHeight: 1.2,
+      letterSpacing: "-0.00833em",
+    },
+    h3: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "3rem",
+      lineHeight: 1.167,
+      letterSpacing: "0em",
+    },
+    h4: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "2.125rem",
+      lineHeight: 1.235,
+      letterSpacing: "0.00735em",
+    },
+    h5: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "1.5rem",
+      lineHeight: 1.334,
+      letterSpacing: "0em",
+    },
+    h6: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 500,
+      fontSize: "1.25rem",
+      lineHeight: 1.6,
+      letterSpacing: "0.0075em",
+    },
+    subtitle1: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "1rem",
+      lineHeight: 1.75,
+      letterSpacing: "0.00938em",
+    },
+    subtitle2: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 500,
+      fontSize: "0.875rem",
+      lineHeight: 1.57,
+      letterSpacing: "0.00714em",
+    },
+    body1: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "1rem",
+      lineHeight: 1.5,
+      letterSpacing: "0.00938em",
+    },
+    body2: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "0.875rem",
+      lineHeight: 1.43,
+      letterSpacing: "0.01071em",
+    },
+    button: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 500,
+      fontSize: "0.875rem",
+      lineHeight: 1.75,
+      letterSpacing: "0.02857em",
+      textTransform: "uppercase",
+    },
+    caption: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "0.75rem",
+      lineHeight: 1.66,
+      letterSpacing: "0.03333em",
+    },
+    overline: {
+      fontFamily: '"Noto Sans KR", "Montserrat", sans-serif',
+      fontWeight: 400,
+      fontSize: "0.75rem",
+      lineHeight: 2.66,
+      letterSpacing: "0.08333em",
+      textTransform: "uppercase",
+    },
+  },
+  overrides: {
+    // Style sheet name ⚛️
+    MuiButton: {
+      // Name of the rule
+      containedPrimary: {
+        // Some CSS
+        color: "white",
+      },
+    },
+  },
+});
