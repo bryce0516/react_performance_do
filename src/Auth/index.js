@@ -20,7 +20,8 @@ export default class Auth {
       admin_id: id,
       admin_pass: sha256(password),
     });
-    if (result.status === 200) {
+    console.log("check singin uath", result);
+    if (result.status == 200) {
       const {
         token,
         admin_nm,
@@ -41,8 +42,8 @@ export default class Auth {
         kitchen_type,
       });
       return result.data;
-    } else if (result.status === 403) {
-      console.log("sign in is 403", result.data);
+    } else if (result.status == 403) {
+      console.log(result.data);
       return { status: result.status, ...result.data };
     } else {
       console.log(result);
@@ -60,21 +61,18 @@ export default class Auth {
   async _clearLocalStorage() {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
-    localStorage.remote("user_obj");
+    localStorage.removeItem("user_obj");
   }
-
   _getExpiration() {
     const expiration = localStorage.getItem("expires_at");
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
   }
-
   _getProfile() {
     return this.isAuthenticated()
       ? JSON.parse(localStorage.getItem("user_obj"))
-      : { admin: null, admin_type: null };
+      : { admin_nm: null, admin_type: null };
   }
-
   _isAuthenticated() {
     return moment().isBefore(this._getExpiration());
   }

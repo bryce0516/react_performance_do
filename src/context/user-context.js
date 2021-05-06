@@ -16,7 +16,6 @@ const reducer = (state, action) => {
         isAuthenticated: action.payload.authenticated,
         user: action.payload.user,
       };
-
     case "logoutUser":
       return {
         ...state,
@@ -38,7 +37,7 @@ export const UserContextProvider = ({ children, auth }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const [successOpen, setSuccessOpen] = useState(false);
   let history = useHistory();
-
+  // Add a request interceptor
   Axios.interceptors.request.use(
     function (config) {
       const token = auth.getToken();
@@ -49,26 +48,32 @@ export const UserContextProvider = ({ children, auth }) => {
       return config;
     },
     function (error) {
+      // Do something with request error
+
       return Promise.reject(error);
     }
   );
 
+  // 응답 인터셉터 추가
   Axios.interceptors.response.use(
     function (response) {
+      // 응답 데이터를 가공
+
       return response;
     },
     function (error) {
+      // 오류 응답을 처리
+      // ...
       console.log(error.response);
       if (error.response) {
         if (
-          error.response.status === 401 &&
-          error.response.data.code === "JWT_EXPIRED"
+          error.response.status == 401 &&
+          error.response.data.code == "JWT_EXPIRED"
         ) {
-          handleLogout();
+          handleLogOut();
           history.push("/login");
         }
       }
-
       return Promise.reject(error);
     }
   );
@@ -77,7 +82,7 @@ export const UserContextProvider = ({ children, auth }) => {
     if (auth.getToken()) {
       dispatch({
         type: "loginUser",
-        paylaod: {
+        payload: {
           authenticated: true,
           user: auth.getProfile(),
         },
@@ -106,7 +111,7 @@ export const UserContextProvider = ({ children, auth }) => {
     setSuccessOpen(true);
   };
 
-  const handleLogout = () => {
+  const handleLogOut = () => {
     auth.signOut();
     dispatch({
       type: "logoutUser",
@@ -122,12 +127,19 @@ export const UserContextProvider = ({ children, auth }) => {
         ...state,
         signIn: auth.signIn,
         updateContext: handleUpdateContext,
-        signOut: handleLogout,
+        signOut: handleLogOut,
       }}
     >
-      <Alert onClose={handleClose} severity="success">
-        로그인 성공!
-      </Alert>
+      {children}
+      <Snackbar
+        open={successOpen}
+        autoHideDuration={3000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success">
+          로그인 성공!
+        </Alert>
+      </Snackbar>
     </UserContext.Provider>
   );
 };

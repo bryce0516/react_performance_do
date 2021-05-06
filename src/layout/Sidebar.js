@@ -234,7 +234,7 @@ export default function Sidebar(props) {
   );
 
   const container =
-    window !== undefined ? () => window().document.body : undefiend;
+    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <nav className={classes.drawer} aria-label="folders">

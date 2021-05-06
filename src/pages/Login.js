@@ -98,6 +98,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login({ userContext }) {
+  console.log("userContext", userContext);
   const usernameRef = useRef("");
   const passwordRef = useRef("");
   let history = useHistory();

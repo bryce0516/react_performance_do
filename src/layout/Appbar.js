@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ElevationScroll(props) {
-  const { chlidren, window } = props;
+  const { children, window } = props;
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,

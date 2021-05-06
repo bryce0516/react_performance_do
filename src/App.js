@@ -35,6 +35,17 @@ function App() {
             <>
               <Switch>
                 <>
+                  <Route path="/login" exact>
+                    <Container>
+                      <Login userContext={userContext} />
+                    </Container>
+                  </Route>
+                  <Route path="/">
+                    <Redirect to="/login" />
+                  </Route>
+                  <Route path="*">
+                    <Redirect to="/login" />
+                  </Route>
                   <Route
                     path="/mk"
                     isAuthenticated={
@@ -51,18 +62,6 @@ function App() {
                     }
                     component={KitchenRoutes}
                   />
-
-                  <Route path="/login" exact>
-                    <Container>
-                      <Login userContext={userContext} />
-                    </Container>
-                  </Route>
-                  <Route path="/">
-                    <Redirect to="/login" />
-                  </Route>
-                  <Route path="*">
-                    <Redirect to="/login" />
-                  </Route>
                 </>
               </Switch>
             </>

@@ -37,7 +37,7 @@ export default function Layout({ children }) {
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}
       />
-      <SideBar
+      <Sidebar
         mobileOpen={mobileOpen}
         setMobileOpen={setMobileOpen}
         handleDrawerToggle={handleDrawerToggle}

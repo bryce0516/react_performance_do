@@ -40,7 +40,7 @@ const api = {
       }
     }
   },
-  async postMessage(url, data) {
+  async post(url, data) {
     try {
       let result = await axios({
         method: "post",
