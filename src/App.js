@@ -43,10 +43,22 @@ function App() {
                     path="/kitchen"
                     isAuthenticated={
                       userContext.isAuthenticated &&
-                      userContext.user.admin_type === "AD_001"
+                      userContext.user.admin_type === "AD_002"
                     }
-                    component={MKRoutes}
+                    component={KitchenRoutes}
                   />
+
+                  <Route path="/login" exact>
+                    <Container>
+                      <Login userContext={userContext} />
+                    </Container>
+                  </Route>
+                  <Route path="/">
+                    <Redirect to="/login" />
+                  </Route>
+                  <Route path="*">
+                    <Redirect to="/login" />
+                  </Route>
                 </>
               </Switch>
             </>
