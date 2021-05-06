@@ -9,6 +9,10 @@ import { plus } from "./redux/reducers/commonReducer";
 import Auth from "./Auth";
 import { UserContextProvider } from "./context";
 import { UserContext } from "./context/user-context";
+
+import Login from "./pages/Login";
+import MKRoutes from "./routes/MKRoutes";
+import KitchenRoutes from "./routes/KitchenRoutes";
 const Container = styled.div`
   display: flex;
   justify-content: center;
