@@ -6,6 +6,9 @@ import styled from "@emotion/styled";
 import theme from "./theme";
 import { useSelector, useDispatch } from "react-redux";
 import { plus } from "./redux/reducers/commonReducer";
+import Auth from "./Auth";
+import { UserContextProvider } from "./context";
+import { UserContext } from "./context/user-context";
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -15,13 +18,41 @@ const Container = styled.div`
 `;
 
 function App() {
-  // const auth = new Auth();
+  const auth = new Auth();
   const state = useSelector((state) => state.commonReducer.number);
   const dispatch = useDispatch();
   console.log(state);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <UserContextProvider auth={auth}>
+        <UserContext.Consumer>
+          {(userContext) => (
+            <>
+              <Switch>
+                <>
+                  <Route
+                    path="/mk"
+                    isAuthenticated={
+                      userContext.isAuthenticated &&
+                      userContext.user.admin_type === "AD_001"
+                    }
+                    component={MKRoutes}
+                  />
+                  <Route
+                    path="/kitchen"
+                    isAuthenticated={
+                      userContext.isAuthenticated &&
+                      userContext.user.admin_type === "AD_001"
+                    }
+                    component={MKRoutes}
+                  />
+                </>
+              </Switch>
+            </>
+          )}
+        </UserContext.Consumer>
+      </UserContextProvider>
       <div className="app">hello world</div>
 
       <button onClick={() => dispatch(plus(1))}> this is click button </button>

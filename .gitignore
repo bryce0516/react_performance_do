@@ -11,6 +11,11 @@
 # production
 /build
 
+# src
+/src/api/baseURL.js
+
+
+
 # misc
 .DS_Store
 .env.local
